@@ -3,7 +3,7 @@ import hashlib
 from flask import Flask, request, make_response
 import xml.etree.ElementTree as ET
 
-WX_TOKEN = 'fancy'
+WX_TOKEN = '24_Izj8pBDc6UKYbWfM7DUROUXwIAU8Vd0HMh3NE8vuLJ9b3y_grnoSw61XgAFJUEW7zq4ZqGaQK7V6Zy_'
 # 这里填写公众号配置的token
 
 app = Flask(__name__)
@@ -35,5 +35,5 @@ def wechat():
         return response
 
 if __name__ == '__main__':
-app.run()
+app.run(host='0.0.0.0', port=80)
 # app.run(host='0.0.0.0', port=5050)
