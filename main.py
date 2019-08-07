@@ -3,7 +3,7 @@ import hashlib
 from flask import Flask, request, make_response
 import xml.etree.ElementTree as ET
 
-WX_TOKEN = '24_Izj8pBDc6UKYbWfM7DUROUXwIAU8Vd0HMh3NE8vuLJ9b3y_grnoSw61XgAFJUEW7zq4ZqGaQK7V6Zy_'
+WX_TOKEN = '24_xP_mRqkGuEi7l0aBcAns48ddgvRjZCAs6p7_mQU5-zkB6wYZP1XbFRyyLdayfILDbnDA7Zjh9FfHE1JA3invC3hmj_jLzpg-3Ss-Ug2E32gktCp-Kps7KCG-J-x5oXoM3NaRN8h36btaDjK_SANiADALTG'
 # 这里填写公众号配置的token
 
 app = Flask(__name__)
