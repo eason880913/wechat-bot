@@ -32,6 +32,7 @@ def wechat():
             # 新浪SAE未实名用户加上上面这句
             return response
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80)
-# app.run(host='0.0.0.0', port=5050)
+import os
+if __name__ == "__main__":
+    port = int(os.environ.get('PORT', 80))
+    app.run(host='0.0.0.0', port=port)
