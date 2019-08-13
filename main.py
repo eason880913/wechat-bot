@@ -2,7 +2,7 @@ import hashlib
 #from wechatpy.utils import check_signature
 from flask import Flask, request, make_response
 import xml.etree.ElementTree as ET
-
+from lxml import etree
 
 app = Flask(__name__)
 app.debug = True
