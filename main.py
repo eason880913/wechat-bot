@@ -12,6 +12,34 @@ app.debug = True
 def hello():
     return "Hello World!"
 
+class Reply(Post):
+    def __init__(self, req):
+        super(Reply, self).__init__(req)
+        self.xml = f'<xml><ToUserName><![CDATA[{self.FromUserName}]]></ToUserName>' \
+                   f'<FromUserName><![CDATA[{self.ToUserName}]]></FromUserName>' \
+                   f'<CreateTime>{str(int(time.time()))}</CreateTime>'
+
+    def text(self, Content):
+        self.xml += f'<MsgType><![CDATA[text]]></MsgType>' \
+                    f'<Content><![CDATA[{Content}]]></Content></xml>'
+
+    def image(self, MediaId):
+        pass
+
+    def voice(self, MediaId):
+        pass
+
+    def video(self, MediaId, Title, Description):
+        pass
+
+    def music(self, ThumbMediaId, Title='', Description='', MusicURL='', HQMusicUrl=''):
+        pass
+        
+    def reply(self):
+        response = make_response(self.xml)
+        response.content_type = 'application/xml'
+        return response
+
 @app.route('/wechat_api/', methods=['GET', 'POST'])
 # 定义路由地址请与URL后的保持一致
 def wechat():
@@ -32,9 +60,9 @@ def wechat():
             # 新浪SAE未实名用户加上上面这句
             return response
     elif request.method == 'POST':
-        response = make_response(self.xml)
-        response.content_type = 'application/xml'
-        return response
+        message = Reply(request)
+        message.text(message.Content)
+        return message.reply()
 import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 80))
