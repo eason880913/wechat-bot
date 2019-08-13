@@ -14,9 +14,8 @@ def hello():
     return "Hello World!"
 
 class Message(object):
-    def __init__(self, req):
+    def __init__(self, req): #req = <Request 'http://we-interface.herokuapp.com/wechat_api/?signature=0755d2637971ca656c50945c80343e8d6124ca8c&timestamp=1565688956&nonce=1129916171&openid=onFvxv87mAo_-B9iQ41rAxCD-b64' [POST]>
         self.request = req
-        print(req)
         self.token = '24__2kZPog1-kGUQtGTAoBzjd_AFey2IxCTfNdMaikkghAQPr3cAupwEYWYxLCPhm-P3oeSQvtJh0SKJyqQxUcRPMnARoz2oHT7oKdiNTySfIIK6A_dungDKBM2muoCWPgAGAYSL'
         self.AppID = 'wxca926cd8097ad666'
         self.AppSecret = 'ffd6e016a9aff283e2af7ffa386630fb'
@@ -25,6 +24,7 @@ class Post(Message):
     def __init__(self, req):
         super(Post, self).__init__(req)
         self.xml = etree.fromstring(req.stream.read())
+        print(self.xml)
         self.MsgType = self.xml.find("MsgType").text
         self.ToUserName = self.xml.find("ToUserName").text
         self.FromUserName = self.xml.find("FromUserName").text
