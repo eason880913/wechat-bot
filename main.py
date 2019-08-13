@@ -12,6 +12,47 @@ app.debug = True
 def hello():
     return "Hello World!"
 
+class Message(object):
+    def __init__(self, req):
+        self.request = req
+        self.token = '24__2kZPog1-kGUQtGTAoBzjd_AFey2IxCTfNdMaikkghAQPr3cAupwEYWYxLCPhm-P3oeSQvtJh0SKJyqQxUcRPMnARoz2oHT7oKdiNTySfIIK6A_dungDKBM2muoCWPgAGAYSL'
+        self.AppID = 'wxca926cd8097ad666'
+        self.AppSecret = 'ffd6e016a9aff283e2af7ffa386630fb'
+
+class Post(Message):
+    def __init__(self, req):
+        super(Post, self).__init__(req)
+        self.xml = etree.fromstring(req.stream.read())
+        self.MsgType = self.xml.find("MsgType").text
+        self.ToUserName = self.xml.find("ToUserName").text
+        self.FromUserName = self.xml.find("FromUserName").text
+        self.CreateTime = self.xml.find("CreateTime").text
+        self.MsgId = self.xml.find("MsgId").text
+
+        hash_table = {
+            'text': ['Content'],
+            'image': ['PicUrl', 'MediaId'],
+            'voice': ['MediaId', 'Format'],
+            'video': ['MediaId', 'ThumbMediaId'],
+            'shortvideo': ['MediaId', 'ThumbMediaId'],
+            'location': ['Location_X', 'Location_Y', 'Scale', 'Label'],
+            'link': ['Title', 'Description', 'Url'],
+        }
+        attributes = hash_table[self.MsgType]
+        self.Content = self.xml.find("Content").text if 'Content' in attributes else '抱歉，暂未支持此消息。'
+        self.PicUrl = self.xml.find("PicUrl").text if 'PicUrl' in attributes else '抱歉，暂未支持此消息。'
+        self.MediaId = self.xml.find("MediaId").text if 'MediaId' in attributes else '抱歉，暂未支持此消息。'
+        self.Format = self.xml.find("Format").text if 'Format' in attributes else '抱歉，暂未支持此消息。'
+        self.ThumbMediaId = self.xml.find("ThumbMediaId").text if 'ThumbMediaId' in attributes else '抱歉，暂未支持此消息。'
+        self.Location_X = self.xml.find("Location_X").text if 'Location_X' in attributes else '抱歉，暂未支持此消息。'
+        self.Location_Y = self.xml.find("Location_Y").text if 'Location_Y' in attributes else '抱歉，暂未支持此消息。'
+        self.Scale = self.xml.find("Scale").text if 'Scale' in attributes else '抱歉，暂未支持此消息。'
+        self.Label = self.xml.find("Label").text if 'Label' in attributes else '抱歉，暂未支持此消息。'
+        self.Title = self.xml.find("Title").text if 'Title' in attributes else '抱歉，暂未支持此消息。'
+        self.Description = self.xml.find("Description").text if 'Description' in attributes else '抱歉，暂未支持此消息。'
+        self.Url = self.xml.find("Url").text if 'Url' in attributes else '抱歉，暂未支持此消息。'
+        self.Recognition = self.xml.find("Recognition").text if 'Recognition' in attributes else '抱歉，暂未支持此消息。'
+
 class Reply(Post):
     def __init__(self, req):
         super(Reply, self).__init__(req)
