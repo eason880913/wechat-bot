@@ -8,7 +8,7 @@ app = Flask(__name__)
 app.debug = True
 
 
-@app.route("/", method=['GET'])
+@app.route("/", methods=['GET'])
 def hello():
     return "Hello World!"
 
