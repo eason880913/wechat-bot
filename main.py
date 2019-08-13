@@ -16,6 +16,7 @@ def hello():
 class Message(object):
     def __init__(self, req):
         self.request = req
+        print(req)
         self.token = '24__2kZPog1-kGUQtGTAoBzjd_AFey2IxCTfNdMaikkghAQPr3cAupwEYWYxLCPhm-P3oeSQvtJh0SKJyqQxUcRPMnARoz2oHT7oKdiNTySfIIK6A_dungDKBM2muoCWPgAGAYSL'
         self.AppID = 'wxca926cd8097ad666'
         self.AppSecret = 'ffd6e016a9aff283e2af7ffa386630fb'
@@ -54,7 +55,7 @@ class Post(Message):
         self.Url = self.xml.find("Url").text if 'Url' in attributes else '抱歉，暂未支持此消息。'
         self.Recognition = self.xml.find("Recognition").text if 'Recognition' in attributes else '抱歉，暂未支持此消息。'
 
-class Reply(Post): # <Request 'http://we-interface.herokuapp.com/wechat_api/?signature=55df59ed9869663f1c4dfafc61a160e4f6b22aa4&timestamp=1565687475&nonce=444201171&openid=onFvxv87mAo_-B9iQ41rAxCD-b64' [POST]>s
+class Reply(Post): # <Request 'http://we-interface.herokuapp.com/wechat_api/?signature=55df59ed9869663f1c4dfafc61a160e4f6b22aa4&timestamp=1565687475&nonce=444201171&openid=onFvxv87mAo_-B9iQ41rAxCD-b64' [POST]>
     def __init__(self, req):
         super(Reply, self).__init__(req)
         self.xml = f'<xml><ToUserName><![CDATA[{self.FromUserName}]]></ToUserName>' \
