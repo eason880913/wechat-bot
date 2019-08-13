@@ -1,5 +1,5 @@
 import hashlib
-from wechatpy.utils import check_signature
+#from wechatpy.utils import check_signature
 from flask import Flask, request, make_response
 import xml.etree.ElementTree as ET
 
