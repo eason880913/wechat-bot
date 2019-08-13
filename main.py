@@ -31,30 +31,10 @@ def wechat():
             # response.headers['content-type'] = 'text' 
             # 新浪SAE未实名用户加上上面这句
             return response
-'''
-def get_all_args(req_dict:Dict):
-    echostr = req_dict.get("echostr")  # 获取随机字符串
-    signature = req_dict.get("signature")  # 先获取加密签名
-    timestamp = req_dict.get("timestamp")  # 获取时间戳
-    nonce = req_dict.get("nonce")  # 获取随机数
-    return echostr,signature,timestamp,nonce
-
-@app.route('/wechat_verify/',methods=['GET'])
-def wechat_verify():
-    # 获取参数
-    rq_dict = request.args
-    if len(rq_dict) == 0:
-        return ""
-    tuple_args = get_all_args(rq_dict)
-    token = current_app.config.get('TOKEN')
-    try:
-        check_signature(token, tuple_args[1], tuple_args[2], tuple_args[3])
-    except InvalidSignatureException as e:
-        logger.error(e,exc_info=True)
-        return ''
-    else:
-        return tuple_args[0] 
-'''          
+    if request.method == 'POST':
+        response = make_response(self.xml)
+        response.content_type = 'application/xml'
+        return response
 import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 80))
