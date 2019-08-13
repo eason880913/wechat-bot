@@ -31,7 +31,7 @@ def wechat():
             # response.headers['content-type'] = 'text' 
             # 新浪SAE未实名用户加上上面这句
             return response
-    if request.method == 'POST':
+    elif request.method == 'POST':
         response = make_response(self.xml)
         response.content_type = 'application/xml'
         return response
