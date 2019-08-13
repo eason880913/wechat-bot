@@ -102,7 +102,7 @@ def wechat():
             # 新浪SAE未实名用户加上上面这句
             return response
     elif request.method == 'POST':
-        print(request)
+        print('X'+request+'X')
         message = Reply(request)
         message.text(message.Content)
         return message.reply()
