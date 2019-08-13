@@ -54,7 +54,7 @@ class Post(Message):
         self.Url = self.xml.find("Url").text if 'Url' in attributes else '抱歉，暂未支持此消息。'
         self.Recognition = self.xml.find("Recognition").text if 'Recognition' in attributes else '抱歉，暂未支持此消息。'
 
-class Reply(Post): # <Request 'http://we-interface.herokuapp.com/wechat_api/?signature=55df59ed9869663f1c4dfafc61a160e4f6b22aa4&timestamp=1565687475&nonce=444201171&openid=onFvxv87mAo_-B9iQ41rAxCD-b64' [POST]>
+class Reply(Post): # <Request 'http://we-interface.herokuapp.com/wechat_api/?signature=55df59ed9869663f1c4dfafc61a160e4f6b22aa4&timestamp=1565687475&nonce=444201171&openid=onFvxv87mAo_-B9iQ41rAxCD-b64' [POST]>s
     def __init__(self, req):
         super(Reply, self).__init__(req)
         self.xml = f'<xml><ToUserName><![CDATA[{self.FromUserName}]]></ToUserName>' \
