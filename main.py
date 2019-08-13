@@ -31,7 +31,7 @@ def wechat():
             # response.headers['content-type'] = 'text' 
             # 新浪SAE未实名用户加上上面这句
             return response
-
+'''
 def get_all_args(req_dict:Dict):
     echostr = req_dict.get("echostr")  # 获取随机字符串
     signature = req_dict.get("signature")  # 先获取加密签名
@@ -57,7 +57,8 @@ def wechat_verify():
         logger.error(e,exc_info=True)
         return ''
     else:
-        return tuple_args[0]           
+        return tuple_args[0] 
+'''          
 import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 80))
