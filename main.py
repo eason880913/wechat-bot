@@ -1,8 +1,8 @@
 import hashlib
 #from wechatpy.utils import check_signature
 from flask import Flask, request, make_response
-import xml.etree.ElementTree as ET
-from lmxl import etree
+#import xml.etree.ElementTree as ET
+from lxml import etree
 import time
 
 app = Flask(__name__)
