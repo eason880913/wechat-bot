@@ -16,7 +16,7 @@ def hello():
 # 定义路由地址请与URL后的保持一致
 def wechat():
     if request.method == 'GET':
-        token = '24_xP_mRqkGuEi7l0aBcAns48ddgvRjZCAs6p7_mQU5-zkB6wYZP1XbFRyyLdayfILDbnDA7Zjh9FfHE1JA3invC3hmj_jLzpg-3Ss-Ug2E32gktCp-Kps7KCG-J-x5oXoM3NaRN8h36btaDjK_SANiADALTG'
+        token = '24__2kZPog1-kGUQtGTAoBzjd_AFey2IxCTfNdMaikkghAQPr3cAupwEYWYxLCPhm-P3oeSQvtJh0SKJyqQxUcRPMnARoz2oHT7oKdiNTySfIIK6A_dungDKBM2muoCWPgAGAYSL'
         data = request.args
         signature = data.get('signature', '')
         timestamp = data.get('timestamp', '')
@@ -41,10 +41,6 @@ def get_all_args(req_dict:Dict):
 
 @app.route('/wechat_verify/',methods=['GET'])
 def wechat_verify():
-    '''
-    用来处理微信服务器对本后台的验证，GET方法。
-    :return:
-    '''
     # 获取参数
     rq_dict = request.args
     if len(rq_dict) == 0:
