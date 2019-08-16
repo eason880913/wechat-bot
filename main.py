@@ -25,16 +25,16 @@ class Post(Message):
         super(Post, self).__init__(req)
         self.xml = etree.fromstring(req.stream.read())
         self.MsgType = self.xml.find("MsgType").text
-        print(self.xml.find("MsgType").text)
+        #print(self.xml.find("MsgType").text)
         self.ToUserName = self.xml.find("ToUserName").text
-        print(self.xml.find("ToUserName").text)
+        #print(self.xml.find("ToUserName").text)
         self.FromUserName = self.xml.find("FromUserName").text
-        print(self.xml.find("FromUserName").text)
+        #print(self.xml.find("FromUserName").text)
         self.CreateTime = self.xml.find("CreateTime").text
-        print(self.xml.find("CreateTime").text)
+        #print(self.xml.find("CreateTime").text)
         self.MsgId = self.xml.find("MsgId").text
-        print(self.xml.find("MsgId").text)
-
+        #print(self.xml.find("MsgId").text)
+        print('text:'+self.xml.find("Content").text)
         hash_table = {
             'text': ['Content'],
             'image': ['PicUrl', 'MediaId'],
