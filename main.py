@@ -89,6 +89,7 @@ def wechat():
     if request.method == 'GET':
         token = '24__2kZPog1-kGUQtGTAoBzjd_AFey2IxCTfNdMaikkghAQPr3cAupwEYWYxLCPhm-P3oeSQvtJh0SKJyqQxUcRPMnARoz2oHT7oKdiNTySfIIK6A_dungDKBM2muoCWPgAGAYSL'
         data = request.args
+        print('test:'+data)
         signature = data.get('signature', '')
         timestamp = data.get('timestamp', '')
         nonce = data.get('nonce', '')
