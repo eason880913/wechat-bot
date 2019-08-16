@@ -27,9 +27,13 @@ class Post(Message):
         self.MsgType = self.xml.find("MsgType").text
         print(self.xml.find("MsgType").text)
         self.ToUserName = self.xml.find("ToUserName").text
+        print(self.xml.find("ToUserName").text)
         self.FromUserName = self.xml.find("FromUserName").text
+        print(self.xml.find("FromUserName").text)
         self.CreateTime = self.xml.find("CreateTime").text
+        print(self.xml.find("CreateTime").text)
         self.MsgId = self.xml.find("MsgId").text
+        print(self.xml.find("MsgId").text)
 
         hash_table = {
             'text': ['Content'],
