@@ -24,9 +24,11 @@ class Post(Message):
     def __init__(self, req):
         super(Post, self).__init__(req)
         self.xml = etree.fromstring(req.stream.read())
-        print(self.xml)
+        print('test2:'+self.xml)
         self.MsgType = self.xml.find("MsgType").text
+        print('test3:'+self.MsgType)
         self.ToUserName = self.xml.find("ToUserName").text
+        print('test4:'+self.ToUserName)
         self.FromUserName = self.xml.find("FromUserName").text
         self.CreateTime = self.xml.find("CreateTime").text
         self.MsgId = self.xml.find("MsgId").text
@@ -89,7 +91,6 @@ def wechat():
     if request.method == 'GET':
         token = '24__2kZPog1-kGUQtGTAoBzjd_AFey2IxCTfNdMaikkghAQPr3cAupwEYWYxLCPhm-P3oeSQvtJh0SKJyqQxUcRPMnARoz2oHT7oKdiNTySfIIK6A_dungDKBM2muoCWPgAGAYSL'
         data = request.args
-        print('test:'+data)
         signature = data.get('signature', '')
         timestamp = data.get('timestamp', '')
         nonce = data.get('nonce', '')
@@ -105,6 +106,7 @@ def wechat():
             return response
     elif request.method == 'POST': # <Request 'http://we-interface.herokuapp.com/wechat_api/?signature=55df59ed9869663f1c4dfafc61a160e4f6b22aa4&timestamp=1565687475&nonce=444201171&openid=onFvxv87mAo_-B9iQ41rAxCD-b64' [POST]>
         message = Reply(request)
+        print('test1:'+message)
         message.text(message.Content)
         return message.reply()
 import os
