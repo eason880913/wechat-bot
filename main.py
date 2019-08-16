@@ -44,6 +44,7 @@ class Post(Message):
             'location': ['Location_X', 'Location_Y', 'Scale', 'Label'],
             'link': ['Title', 'Description', 'Url'],
         }
+        print(hash_table)
         attributes = hash_table[self.MsgType]
         self.Content = self.xml.find("Content").text if 'Content' in attributes else '抱歉，暂未支持此消息。'
         self.PicUrl = self.xml.find("PicUrl").text if 'PicUrl' in attributes else '抱歉，暂未支持此消息。'
