@@ -104,7 +104,6 @@ def wechat():
             return response
     elif request.method == 'POST': # <Request 'http://we-interface.herokuapp.com/wechat_api/?signature=55df59ed9869663f1c4dfafc61a160e4f6b22aa4&timestamp=1565687475&nonce=444201171&openid=onFvxv87mAo_-B9iQ41rAxCD-b64' [POST]>
         message = Reply(request)
-        print('test1:'+message)
         message.text(message.Content)
         return message.reply()
 import os
