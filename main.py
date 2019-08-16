@@ -24,11 +24,9 @@ class Post(Message):
     def __init__(self, req):
         super(Post, self).__init__(req)
         self.xml = etree.fromstring(req.stream.read())
-        print('test2:'+self.xml)
         self.MsgType = self.xml.find("MsgType").text
-        print('test3:'+self.MsgType)
+        print(self.xml.find("MsgType").text)
         self.ToUserName = self.xml.find("ToUserName").text
-        print('test4:'+self.ToUserName)
         self.FromUserName = self.xml.find("FromUserName").text
         self.CreateTime = self.xml.find("CreateTime").text
         self.MsgId = self.xml.find("MsgId").text
