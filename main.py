@@ -45,7 +45,7 @@ class Post(Message):
             'link': ['Title', 'Description', 'Url'],
         }
         attributes = hash_table[self.MsgType]
-        print(attributes)
+        #print(attributes)
         self.Content = self.xml.find("Content").text if 'Content' in attributes else '抱歉，暂未支持此消息。'
         self.PicUrl = self.xml.find("PicUrl").text if 'PicUrl' in attributes else '抱歉，暂未支持此消息。'
         self.MediaId = self.xml.find("MediaId").text if 'MediaId' in attributes else '抱歉，暂未支持此消息。'
